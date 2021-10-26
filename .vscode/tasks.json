@@ -48,6 +48,29 @@
                 "clear": false
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Select all from table",
+            "detail": "Selects all data from a table",
+            "type": "shell",
+            "command": "psql",
+            "args": [
+                "repair_bureau_db",
+                "-c",
+                "SELECT * FROM ${fileBasename};"
+            ],
+            "group": "none",
+            "isBackground": false,
+            "promptOnClose": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
         }
     ]
 }
