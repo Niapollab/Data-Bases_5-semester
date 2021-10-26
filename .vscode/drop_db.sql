@@ -1,0 +1,1 @@
+DROP DATABASE repair_bureau_db;
