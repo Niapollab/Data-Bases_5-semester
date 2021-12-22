@@ -50,14 +50,83 @@
             "problemMatcher": []
         },
         {
-            "label": "Select all from table",
-            "detail": "Selects all data from a table",
+            "label": "Create Schema",
+            "detail": "Create schema for this laboratory work.",
             "type": "shell",
             "command": "psql",
             "args": [
-                "repair_bureau_db",
-                "-c",
-                "SELECT * FROM ${fileBasename};"
+                "pokataev_nv_db",
+                "-f",
+                "${workspaceFolder}/.vscode/create_schema_db.sql"
+            ],
+            "group": "none",
+            "isBackground": false,
+            "promptOnClose": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Drop Schema",
+            "detail": "Drop schema for this laboratory work.",
+            "type": "shell",
+            "command": "psql",
+            "args": [
+                "pokataev_nv_db",
+                "-f",
+                "${workspaceFolder}/.vscode/drop_schema_db.sql"
+            ],
+            "group": "none",
+            "isBackground": false,
+            "promptOnClose": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create Tables",
+            "detail": "Create tables for this laboratory work.",
+            "type": "shell",
+            "command": "psql",
+            "args": [
+                "pokataev_nv_db",
+                "-f",
+                "${workspaceFolder}/.vscode/create_tables.sql"
+            ],
+            "group": "none",
+            "isBackground": false,
+            "promptOnClose": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Drop Tables",
+            "detail": "Drop tables for this laboratory work.",
+            "type": "shell",
+            "command": "psql",
+            "args": [
+                "pokataev_nv_db",
+                "-f",
+                "${workspaceFolder}/.vscode/drop_tables.sql"
             ],
             "group": "none",
             "isBackground": false,

@@ -1,1 +1,1 @@
-DROP DATABASE repair_bureau_db;
+DROP DATABASE pokataev_nv_db;
