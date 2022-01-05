@@ -100,20 +100,22 @@ COMMENT ON COLUMN repair_bureau.maintenance_report.closing_date IS 'Время �
 
 CREATE TABLE repair_bureau.details_history (
 	id bigserial NOT NULL,
+	detail_id bigserial NOT NULL,
 	id_writer bigserial,
 
 	type repair_bureau.history_entry_type NOT NULL,
-	detail_serial bigserial NOT NULL,
+	
 	count integer NOT NULL,
 
 	CONSTRAINT details_history_pk PRIMARY KEY (id),
-	CONSTRAINT details_history_fk0 FOREIGN KEY (id_writer) REFERENCES repair_bureau.employee(id) ON DELETE SET NULL
+	CONSTRAINT details_history_fk0 FOREIGN KEY (detail_id) REFERENCES repair_bureau.detail(id) ON DELETE RESTRICT,
+	CONSTRAINT details_history_fk1 FOREIGN KEY (id_writer) REFERENCES repair_bureau.employee(id) ON DELETE SET NULL
 );
 COMMENT ON TABLE repair_bureau.details_history IS 'Таблица истории деталей. Сюда помещаются все обновления/очистки составов деталей на складах и в резерве';
 COMMENT ON COLUMN repair_bureau.details_history.id IS 'Идентификатор записи';
 COMMENT ON COLUMN repair_bureau.details_history.id_writer IS 'Идентификатор автора записи';
 COMMENT ON COLUMN repair_bureau.details_history.type IS 'Тип обновления';
-COMMENT ON COLUMN repair_bureau.details_history.detail_serial IS 'Серийный номер детали';
+COMMENT ON COLUMN repair_bureau.details_history.detail_id IS 'Идентификатор номер детали';
 COMMENT ON COLUMN repair_bureau.details_history.count IS 'Число деталей на складе';
 
 CREATE TABLE repair_bureau.expended_resources (
@@ -130,23 +132,25 @@ COMMENT ON COLUMN repair_bureau.expended_resources.id_report IS 'Идентиф�
 COMMENT ON COLUMN repair_bureau.expended_resources.id_details_history_entry IS 'Запись об израсходованных деталях в таблице отчетности';
 
 CREATE TABLE repair_bureau.spare_resources (
-	detail_serial bigserial NOT NULL,
+	detail_id bigserial NOT NULL,
 	count integer NOT NULL,
 
-	CONSTRAINT unique_detail_serial UNIQUE (detail_serial)
+	CONSTRAINT spare_resources_fk0 FOREIGN KEY (detail_id) REFERENCES repair_bureau.detail(id) ON DELETE RESTRICT,
+	CONSTRAINT unique_detail_serial UNIQUE (detail_id)
 );
 COMMENT ON TABLE repair_bureau.spare_resources IS 'Таблица запасных ресурсов';
-COMMENT ON COLUMN repair_bureau.spare_resources.detail_serial IS 'Серийный номер детали';
+COMMENT ON COLUMN repair_bureau.spare_resources.detail_id IS 'Идентификатор номер детали';
 COMMENT ON COLUMN repair_bureau.spare_resources.count IS 'Число деталей';
 
 CREATE TABLE repair_bureau.remote_resources (
-	detail_serial bigserial NOT NULL,
+	detail_id bigserial NOT NULL,
 	storage bigserial NOT NULL,
 	count integer NOT NULL,
 
-	CONSTRAINT unique_detail_serial_and_storage UNIQUE (detail_serial, storage)
+	CONSTRAINT remote_resources_fk0 FOREIGN KEY (detail_id) REFERENCES repair_bureau.detail(id) ON DELETE RESTRICT,
+	CONSTRAINT unique_detail_serial_and_storage UNIQUE (detail_id, storage)
 );
 COMMENT ON TABLE repair_bureau.remote_resources IS 'Таблица ресурсов на удаленных складах';
-COMMENT ON COLUMN repair_bureau.remote_resources.detail_serial IS 'Серийный номер детали';
+COMMENT ON COLUMN repair_bureau.remote_resources.detail_id IS 'Идентификатор номер детали';
 COMMENT ON COLUMN repair_bureau.remote_resources.count IS 'Число деталей';
 COMMENT ON COLUMN repair_bureau.remote_resources.storage IS 'Идентификатор склада';
