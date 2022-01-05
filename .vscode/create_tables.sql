@@ -15,6 +15,18 @@ CREATE TYPE repair_bureau.history_entry_type AS ENUM (
 );
 COMMENT ON TYPE repair_bureau.history_entry_type IS 'Тип записи в истории деталей';
 
+CREATE TABLE repair_bureau.detail (
+	id bigserial NOT NULL,
+	serial bigint NOT NULL,
+	name text NOT NULL,
+
+	CONSTRAINT detail_pk PRIMARY KEY (id)
+);
+COMMENT ON TABLE repair_bureau.detail IS 'Таблица деталей';
+COMMENT ON COLUMN repair_bureau.detail.id IS 'Идентификатор детали';
+COMMENT ON COLUMN repair_bureau.detail.serial IS 'Серийный номер детали';
+COMMENT ON COLUMN repair_bureau.detail.name IS 'Название детали';
+
 CREATE TABLE repair_bureau.rolling_stock (
 	id bigserial NOT NULL,
 

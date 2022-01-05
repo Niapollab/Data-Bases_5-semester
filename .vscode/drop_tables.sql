@@ -17,3 +17,5 @@ DROP TABLE repair_bureau.rolling_stock;
 DROP TYPE repair_bureau.history_entry_type;
 
 DROP TYPE repair_bureau.rolling_stock_type;
+
+DROP TABLE repair_bureau.detail;
