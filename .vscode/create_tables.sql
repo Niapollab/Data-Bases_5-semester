@@ -131,17 +131,6 @@ COMMENT ON TABLE repair_bureau.expended_resources IS 'Таблица израс�
 COMMENT ON COLUMN repair_bureau.expended_resources.id_report IS 'Идентификатор отчета';
 COMMENT ON COLUMN repair_bureau.expended_resources.id_details_history_entry IS 'Запись об израсходованных деталях в таблице отчетности';
 
-CREATE TABLE repair_bureau.spare_resources (
-	detail_id bigserial NOT NULL,
-	count integer NOT NULL,
-
-	CONSTRAINT spare_resources_fk0 FOREIGN KEY (detail_id) REFERENCES repair_bureau.detail(id) ON DELETE RESTRICT,
-	CONSTRAINT unique_detail_serial UNIQUE (detail_id)
-);
-COMMENT ON TABLE repair_bureau.spare_resources IS 'Таблица запасных ресурсов';
-COMMENT ON COLUMN repair_bureau.spare_resources.detail_id IS 'Идентификатор номер детали';
-COMMENT ON COLUMN repair_bureau.spare_resources.count IS 'Число деталей';
-
 CREATE TABLE repair_bureau.remote_resources (
 	detail_id bigserial NOT NULL,
 	storage bigserial NOT NULL,

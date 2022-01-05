@@ -1,7 +1,5 @@
 DROP TABLE repair_bureau.remote_resources;
 
-DROP TABLE repair_bureau.spare_resources;
-
 DROP TABLE repair_bureau.expended_resources;
 
 DROP TABLE repair_bureau.details_history;
