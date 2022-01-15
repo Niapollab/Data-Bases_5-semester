@@ -1,0 +1,7 @@
+DROP TRIGGER tr_drop_work_in_order ON repair_bureau.order_details;
+
+DROP TRIGGER tr_update_after_new_work_in_order ON repair_bureau.order_details;
+
+DROP TRIGGER tr_update_before_new_work_in_order ON repair_bureau.order_details;
+
+DROP TRIGGER tr_insert_new_work_in_order ON repair_bureau.order_details;
